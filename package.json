@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "vite": "^4.4.9",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "sass": "^1.65.1"
+  }
+}
