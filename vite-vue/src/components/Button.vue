@@ -15,11 +15,32 @@ const props = defineProps({
     rounded: {
         type: Boolean,
         required: false
+    },
+    icon: {
+        type: String,
+        required: false
     }
 })
+
+const emit = defineEmits(['clickBtn']);
+const clickOnButton = () => {
+    emit('clickBtn')
+}
+
 </script>
 <template>
-    <button :class="['btn',`btn_${color}`, {'btn_rounded' : rounded}]" :disabled="disabled">{{ label }}</button>
+    <button 
+    :class="['btn',`btn_${color}`, {'btn_rounded' : rounded}, {'btn_icon' : icon}]" 
+    :disabled="disabled"
+    @click="clickOnButton"
+    >
+        <span v-if="icon">
+            <font-awesome-icon :icon="`fa-regular fa-${icon}`" />
+        </span>
+        <span v-else>
+            {{ label }}
+        </span>    
+    </button>
 </template>
 
 <style lang="scss" scoped>
