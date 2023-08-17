@@ -15,6 +15,7 @@ const listOfHeroes = ref([
 ]);
 
 const selectedHeros = ref([]);
+const switchProfessional = ref(false);
 </script>
 
 <template>
@@ -40,6 +41,17 @@ const selectedHeros = ref([]);
     {{ selectedHeros }}
     <div class="line line_block">
         <checkbox-group v-model:value="selectedHeros" name="heros" :options="listOfHeroes"
+        />
+    </div>
+    <h1 class="heading-1">Switch</h1>
+    <div class="line line_block">
+        <checkbox 
+            label="switch Active"
+            name="switch"
+            id="switch"
+            value="switch"
+            type="switch"
+            v-model:checked="switchProfessional"
         />
     </div>
 </template>
