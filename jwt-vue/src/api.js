@@ -20,13 +20,14 @@ axiosApiInstance.interceptors.request.use((config) => {
 axiosApiInstance.interceptors.response.use((response) => {
     return response
 }, async function(error){
+    console.log('error', error)
     const authStore = useAuthStore()
     const originalRequest = error.config
     if(error.response.status === 401 && !originalRequest._retry){
         originalRequest._retry = true
         try {
             const newTokens = await axios.post(
-                `http://securetoken.googleapis.com/v1/token?key=${apiKey}`, {
+                `https://securetoken.googleapis.com/v1/token?key=${apiKey}`, {
                     grant_type: 'refresh_token',
                     refresh_token: JSON.parse(localStorage.getItem('userTokens')).refreshToken
                 }
